@@ -3,4 +3,8 @@
     <string name="app_name">AndroidAssignments</string>
     <string name="hello_message">नमस्ते</string>
     <string name="ButtonText">में बटन हूँ</string>
+    <string name="login">लॉगिन</string>
+    <string name="login_hint">लोगीन नाम</string>
+    <string name="password">पासवर्ड</string>
+    <string name="switch_text">यह क्या करता है ?</string>
 </resources>
