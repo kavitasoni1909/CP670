@@ -7,4 +7,11 @@
     <string name="login_hint">लोगीन नाम</string>
     <string name="password">पासवर्ड</string>
     <string name="switch_text">यह क्या करता है ?</string>
+    <string name="dialog_message">क्या यह एक्टिविटी ख़त्म करनी है?</string>
+    <string name="dialog_title">लिस्ट आइटम एक्टिविटी</string>
+    <string name="yes">हाँ</string>
+    <string name="cancel">नहीं</string>
+    <string name="switch_on">स्विच चालू</string>
+    <string name="switch_off">स्विच बंद</string>
+    <string name="checkbox_response">यह मेरा रिस्पांस हैं</string>
 </resources>
