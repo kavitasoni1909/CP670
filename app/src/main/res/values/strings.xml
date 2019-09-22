@@ -6,4 +6,11 @@
     <string name="login_hint">login name</string>
     <string name="password">Password</string>
     <string name="switch_text">What does this do?</string>
+    <string name="dialog_message">Want to finish this activity?</string>
+    <string name="dialog_title">List Item Activity</string>
+    <string name="yes">Yes</string>
+    <string name="cancel">Cancel</string>
+    <string name="switch_on">Switch in ON</string>
+    <string name="switch_off">Switch is Off</string>
+    <string name="checkbox_response">Here is my response</string>
 </resources>
