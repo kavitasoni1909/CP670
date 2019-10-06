@@ -14,4 +14,6 @@
     <string name="switch_on">स्विच चालू</string>
     <string name="switch_off">स्विच बंद</string>
     <string name="checkbox_response">यह मेरा रिस्पांस हैं</string>
+    <string name="chat">चेत शुरू करे</string>
+    <string name="sendChat">चेट भेजो</string>
 </resources>
