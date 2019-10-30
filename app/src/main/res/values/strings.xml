@@ -15,4 +15,8 @@
     <string name="checkbox_response">Here is my response</string>
     <string name="chat">Start Chat</string>
     <string name="sendChat">Send</string>
+    <string name="toolbarButon">TestToolbar</string>
+    <string name="snackNotification">You have selected Event icon</string>
+    <string name="alertDialogTitle">Do you want to go back</string>
+    <string name="title_activity_test_toolbar">ToolBar</string>
 </resources>

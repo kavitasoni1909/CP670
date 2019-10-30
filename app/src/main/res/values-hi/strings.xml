@@ -16,4 +16,8 @@
     <string name="checkbox_response">यह मेरा रिस्पांस हैं</string>
     <string name="chat">चेत शुरू करे</string>
     <string name="sendChat">चेट भेजो</string>
+    <string name="toolbarButon">टेस्ट टूलबार</string>
+    <string name="snackNotification">अपने इवेंट आइकॉन क्लिक किया</string>
+    <string name="alertDialogTitle">क्या आपको वापस जाना है</string>
+    <string name="title_activity_test_toolbar">टूलबार </string>
 </resources>
