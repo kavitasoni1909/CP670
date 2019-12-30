@@ -39,4 +39,12 @@
         android:layout_marginTop="20dp"
         android:onClick="onTestToolBarButtonClick"
         android:text="@string/toolbarButon" />
+
+    <Button
+        android:id="@+id/weatherForecast"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:onClick="onweatherForecastButtonClick"
+        android:text="Weather Forecast" />
 </LinearLayout>

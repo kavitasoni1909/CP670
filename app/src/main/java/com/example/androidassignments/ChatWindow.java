@@ -3,6 +3,9 @@ package com.example.androidassignments;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -13,9 +16,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -32,6 +37,11 @@ public class ChatWindow extends AppCompatActivity {
     private ChatDatabaseHelper chatDbHelper;
     private SQLiteDatabase database;
 
+    private FrameLayout frameLayout;
+    private boolean isFrameLayoutLoaded;
+
+    Cursor cursor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,11 +51,21 @@ public class ChatWindow extends AppCompatActivity {
         chatText = (EditText) findViewById(R.id.chatText);
         sendButton = (Button) findViewById(R.id.sendButton);
 
+        frameLayout = (FrameLayout)findViewById(R.id.frameLayout);
+        if(frameLayout == null){
+            isFrameLayoutLoaded = false;
+        } else {
+            isFrameLayoutLoaded = true;
+        }
+
+
+
         final ChatAdapter messageAdapter =new ChatAdapter( this );
         chatView.setAdapter (messageAdapter);
         chatDbHelper = new ChatDatabaseHelper(this);
         database = chatDbHelper.getWritableDatabase();
         fetchAllMessages(database);
+
 
         sendButton.setOnClickListener(new View.OnClickListener(){
 
@@ -77,6 +97,7 @@ public class ChatWindow extends AppCompatActivity {
             return textList.size();
         }
 
+
         @NonNull
         @Override
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -93,18 +114,30 @@ public class ChatWindow extends AppCompatActivity {
             return result;
         }
 
+        @Override
+        public long getItemId(int position) {
+            long id = 0;
+            if(cursor != null && !cursor.isClosed()){
+                cursor.moveToPosition(position);
+                id = Long.parseLong(cursor.getString(cursor.getColumnIndex(ChatDatabaseHelper.KEY_ID)));
+            }
+            return id;
+        }
     }
 
     public void fetchAllMessages(SQLiteDatabase database) {
 
-        Cursor cursor = database.query(ChatDatabaseHelper.TABLE_MESSAGES, new String[]{ChatDatabaseHelper.KEY_MESSAGE}, null, null, null, null, null);
+        cursor = database.query(ChatDatabaseHelper.TABLE_MESSAGES, new String[]{ChatDatabaseHelper.KEY_ID, ChatDatabaseHelper.KEY_MESSAGE}, null, null, null, null, null);
 
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-           String message = cursor.getString(0);
+           String message = cursor.getString(1);
+            int columnCount = cursor.getColumnCount();
             Log.i(ACTIVITY_NAME, "message" + cursor.getString( cursor.getColumnIndex( ChatDatabaseHelper.KEY_MESSAGE) ) );
-            Log.i(ACTIVITY_NAME, "Cursor’s  column count =" + cursor.getColumnCount() );
-            Log.i(ACTIVITY_NAME, "Cursor’s  column name =" + cursor.getColumnName(0) );
+            Log.i(ACTIVITY_NAME, "Cursor’s  column count =" + columnCount );
+            for( int i = 0 ; i < columnCount ; i++) {
+                Log.i(ACTIVITY_NAME, "Cursor’s  column name =" + cursor.getColumnName(i));
+            }
             textList.add(message);
             cursor.moveToNext();
         }
